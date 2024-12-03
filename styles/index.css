@@ -1,0 +1,64 @@
+@import url('Sketch.ttf');
+
+@font-face {
+    font-family: 'sketch';
+    src: url('Sketch.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+div#main-section {
+    display: flex;
+    gap: 30px;
+}
+
+#full-container h1 {
+    text-transform: uppercase;
+    font-family: 'sketch', sans-serif;
+    text-decoration: underline;
+    width: 75%;
+    text-align: right;
+}
+
+#filters {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#filters button {
+    font-family: 'sketch', sans-serif;
+    font-size: 20px;
+    padding: 5px 20px;
+    background-color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+#grid-container {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+    width: 500px;
+    height: 500px;
+    border: 2px solid black;
+    gap: 1px;
+}
+
+.grid-item {
+    background-color: white;
+    border: 1px solid #ddd;
+}
+
+.grid-item:hover {
+    background-color: lightblue;
+}
