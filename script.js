@@ -1,6 +1,8 @@
 const gridContainer = document.getElementById("grid-container");
 let currentSize = 16;
 let isDrawing = false; 
+let currentColor = "#000000";
+let useRandomColor = false; 
 
 const clearBtn = document.getElementById('clearBtn');
 clearBtn.onclick = () => reloadGrid();
@@ -41,14 +43,32 @@ function stopDrawing() {
 }
 
 function getRandomColor() {
-  const r = Math.floor(Math.random() * 256);
-  const g = Math.floor(Math.random() * 256);
-  const b = Math.floor(Math.random() * 256);
-  return `rgb(${r}, ${g}, ${b})`;
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
 }
 
+// Change the grid item's color
 function changeColor(e) {
-  e.target.style.backgroundColor = getRandomColor();
+    e.target.style.backgroundColor = useRandomColor ? getRandomColor() : currentColor;
+}
+
+// Set up event listeners for the buttons
+function initializeEventListeners() {
+    const randomColorBtn = document.getElementById("randomColorBtn");
+    const colorPicker = document.getElementById("colorPicker");
+
+    // Enable random color mode
+    randomColorBtn.addEventListener("click", () => {
+        useRandomColor = true;
+    });
+
+    // Use the chosen color from the color picker
+    colorPicker.addEventListener("input", (e) => {
+        useRandomColor = false;
+        currentColor = e.target.value;
+    });
 }
 
 function setGridSize() {
@@ -68,6 +88,7 @@ function reloadGrid() {
 resizeBtn.addEventListener("click", setGridSize);
 clearBtn.addEventListener("click", reloadGrid);
 
+initializeEventListeners();
 createGrid(currentSize);
 
 gridContainer.addEventListener("mouseleave", stopDrawing);

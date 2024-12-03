@@ -1,8 +1,16 @@
 @import url('Sketch.ttf');
+@import url('sketch-me__FREE-version.ttf');
 
 @font-face {
     font-family: 'sketch';
     src: url('Sketch.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'sketch-btn';
+    src: url('sketch-me__FREE-version.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -36,12 +44,16 @@ div#main-section {
 }
 
 #filters button {
-    font-family: 'sketch', sans-serif;
+    font-family: 'sketch-btn', sans-serif;
     font-size: 20px;
     padding: 5px 20px;
     background-color: #fff;
-    text-transform: uppercase;
     cursor: pointer;
+}
+
+#filters button:hover {
+    background-color: #000;
+    color:#fff;
 }
 
 #grid-container {
@@ -61,4 +73,30 @@ div#main-section {
 
 .grid-item:hover {
     background-color: lightblue;
+}
+
+footer {
+    font-family: 'sketch', sans-serif;
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* Mobile */
+@media screen and (max-width: 769px) { 
+    div#main-section {
+        flex-direction: column;
+        width: 100%;
+        margin: auto;
+        align-items: center;
+    }
+
+    #grid-container {
+        width: 300px;
+        height: 300px;
+    }
+
+    #full-container h1 {
+        width: 100%;
+        text-align: center;
+    }
 }
